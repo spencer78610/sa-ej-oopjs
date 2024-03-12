@@ -1,3 +1,69 @@
 a {
     cursor: pointer;
 }
+
+.container {
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  .game-board {
+    display: inline-block;
+    border: 2px solid #333;
+    padding: 10px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(7, 60px); /* Adjust width of cells as needed */
+    grid-template-rows: repeat(6, 60px); /* Adjust height of cells as needed */
+    gap: 5px; /* Adjust gap between cells as needed */
+    background-color: #87CEEB; /* Light blue background */
+  }
+
+  .cell {
+    background-color: #fff; /* White background */
+    border: 2px solid #333;
+    border-radius: 50%; /* Make cells circular */
+  }
+
+  .status {
+    margin-top: 20px;
+  }
+
+  .current-player {
+    font-weight: bold;
+  }
+
+  .winner {
+    font-weight: bold;
+    color: green;
+  }
+
+  .draggable-piece {
+    width: 60px; /* Adjust width and height as needed */
+    height: 60px;
+    background-color: red; /* Example color for the draggable piece */
+    border: 2px solid #333;
+    border-radius: 50%;
+  }
+
+  /* styles.css */
+.piece {
+    width: 50px; /* Adjust dimensions as needed */
+    height: 50px;
+    border-radius: 50%; /* Creates a circular shape */
+    border: 2px solid black; /* Adds a border */
+    box-sizing: border-box; /* Ensures border doesn't affect dimensions */
+}
+
+/* Additional styles for further customization */
+.piece.red {
+    background-color: red;
+}
+
+.piece.blue {
+    background-color: blue;
+}
+
+/* Add more classes and styles as needed for different colors or customizations */
