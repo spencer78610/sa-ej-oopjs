@@ -13,17 +13,11 @@
   </head>
   <body>
     <div class="grid-con">
-      <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Connect Four</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div class="container col-span-full">
-    <h1>Connect Four</h1>
+  <div class="container col-span-full m-col-span-full">
+    <div id="start-menu" class="menu">
+      <h1>Connect Four</h1>
+      <button onclick="startGame()">Start Game</button>
+    </div>
     <div class="game-board">
       <!-- Create a grid for the game board -->
       <div class="grid">
@@ -73,16 +67,13 @@
         <!-- Use JavaScript to dynamically populate and update this grid -->
         <!-- Each cell will have a unique ID based on its position, e.g., cell-0-0, cell-0-1, etc. -->
       </div>
+      </div>
     </div>
     <div class="status">
       <p class="current-player">Current player: <span id="current-player"></span></p>
       <p class="winner" id="winner"></p>
     </div>
+    <div class="draggable-piece" draggable="true"></div>
   </div>
-
 </body>
-</html>
-
-    </div>  
-  </body>
-</html>
+</html>  
