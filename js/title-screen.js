@@ -1,8 +1,8 @@
 export function titleScreen() {
-    const titleScreen = document.querySelector('.title-screen');
-    const gameBoard = document.querySelector('.title-board');
-    const statusBoard = document.querySelector('.status');
-    const startButton = document.querySelector('#start-button');
+        const titleScreen = document.querySelector('.title-screen');
+        const gameBoard = document.querySelector('.title-board');
+        const statusBoard = document.querySelector('.status');
+        const startButton = document.querySelector('#start-button');
 
     startButton.addEventListener('click', function () {
         titleScreen.style.display = 'none'; 
