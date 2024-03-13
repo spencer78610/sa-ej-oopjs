@@ -13,7 +13,11 @@ This is a web version of the game that is built of HTML, CSS and JavaScript.
 3. Players will place one piece per turn.
 4. When one player has gotten their pieces lined up 4 in a row (Horizontal, Vertical or Diagonal), they will win the match (With Text at the bottom being shown which colour was the winner).
 
-Additionally, there are sound feedback for when a piece is placed and when a player is victorious.
+Additionally, there are sound feedback for when a piece is placed and when a player is victorious. There is also a button to have the game restarted part way.
+
+## History
+
+est. March 9th
 
 ## Credits
 
