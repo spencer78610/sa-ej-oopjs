@@ -128,7 +128,7 @@ gameBoard.addEventListener('drop', (event) => {
 
             // Check for a win condition
             if (checkForWin(board, currentPlayerColor)) {
-                document.getElementById('winner').innerText = `${currentPlayerColor.toUpperCase()} wins!`;
+                document.querySelector('.winner').innerText = `${currentPlayerColor.toUpperCase()} wins!`;
                 winSound.play();
                 gameEnded = true; 
                 return; 
