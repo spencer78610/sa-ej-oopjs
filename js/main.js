@@ -1,97 +1,144 @@
-// // Define a Player class to represent each player
-// class Player {
-//     constructor(name, color) {
-//       this.name = name;
-//       this.color = color;
-//     }
-//   }
-  
-//   // Define a ConnectFourGame class to manage the game state and logic
-//   class ConnectFourGame {
-//     constructor(rows = 6, cols = 7) {
-//       this.rows = rows;
-//       this.cols = cols;
-//       this.board = Array.from({ length: rows }, () => Array.from({ length: cols }, () => null));
-//       this.currentPlayer = null;
-//       this.players = [];
-//     }
-  
-//     addPlayer(player) {
-//       this.players.push(player);
-//     }
-  
-//     switchPlayer() {
-//       this.currentPlayer = this.currentPlayer === this.players[0] ? this.players[1] : this.players[0];
-//     }
-  
-//     dropDisc(column) {
-//       for (let row = this.rows - 1; row >= 0; row--) {
-//         if (this.board[row][column] === null) {
-//           this.board[row][column] = this.currentPlayer.color;
-//           return true;
-//         }
-//       }
-//       return false;
-//     }
-  
-//     checkWinner() {
-//       const directions = [
-//         [0, 1], // horizontal
-//         [1, 0], // vertical
-//         [1, 1], // diagonal (right)
-//         [-1, 1], // diagonal (left)
-//       ];
-  
-//       for (let row = 0; row < this.rows; row++) {
-//         for (let col = 0; col < this.cols; col++) {
-//           if (this.board[row][col] !== null) {
-//             for (const [dr, dc] of directions) {
-//               let count = 1;
-//               for (let i = 1; i < 4; i++) {
-//                 const r = row + dr * i;
-//                 const c = col + dc * i;
-//                 if (r >= 0 && r < this.rows && c >= 0 && c < this.cols && this.board[r][c] === this.board[row][col]) {
-//                   count++;
-//                   if (count === 4) {
-//                     return true;
-//                   }
-//                 } else {
-//                   break;
-//                 }
-//               }
-//             }
-//           }
-//         }
-//       }
-//       return false;
-//     }
-//   }
-  
-//   // Example usage
-//   const game = new ConnectFourGame();
-//   const player1 = new Player("Player 1", "red");
-//   const player2 = new Player("Player 2", "yellow");
-//   game.addPlayer(player1);
-//   game.addPlayer(player2);
-  
-//   game.currentPlayer = player1; // Start with player 1
-  
-//   // This part can be integrated with an HTML/CSS interface for user interaction
-//   while (true) {
-//     const column = prompt(`${game.currentPlayer.name}'s turn. Choose a column (0-${game.cols - 1}):`);
-//     if (column === null) break; // Allow the user to cancel the game
-//     if (isNaN(column) || column < 0 || column >= game.cols) {
-//       alert("Invalid column number. Please try again.");
-//       continue;
-//     }
-//     if (game.dropDisc(parseInt(column))) {
-//       if (game.checkWinner()) {
-//         alert(`${game.currentPlayer.name} wins!`);
-//         break;
-//       }
-//       game.switchPlayer();
-//     } else {
-//       alert("Column is full. Please try again.");
-//     }
-//   }
-  
+import { Piece, Player } from "./classes.js";
+import { restartButton } from "./restart.js";
+import { titleScreen } from "./title-screen.js"; 
+
+titleScreen();
+restartButton();
+
+const player1 = new Player(
+    'Player 1', 
+    'red'
+);
+const player2 = new Player(
+    'Player 2', 
+    'yellow'
+);
+
+const piecePlayer1 = new Piece(player1.color);
+const piecePlayer2 = new Piece(player2.color);
+
+const playerColors = ['red', 'yellow']; 
+const board = Array.from({ length: 6 }, () => Array(7).fill(null));
+
+let currentPlayerIndex = 0;
+
+const draggablePiece = document.querySelector('.draggable-piece');
+const gameBoard = document.querySelector('.grid');
+
+draggablePiece.addEventListener('dragstart', (event) => {
+  event.dataTransfer.setData('text/plain', 'piece');
+});
+
+gameBoard.addEventListener('dragover', (event) => {
+  event.preventDefault();
+});
+
+function checkForWin(board, color) {
+  // Check horizontal
+  for (let row = 0; row < 6; row++) {
+      for (let col = 0; col < 4; col++) {
+          if (
+              board[row][col] === color &&
+              board[row][col + 1] === color &&
+              board[row][col + 2] === color &&
+              board[row][col + 3] === color
+          ) {
+              return true;
+          }
+      }
+  }
+
+  // Check vertical
+  for (let row = 0; row < 3; row++) {
+      for (let col = 0; col < 7; col++) {
+          if (
+              board[row][col] === color &&
+              board[row + 1][col] === color &&
+              board[row + 2][col] === color &&
+              board[row + 3][col] === color
+          ) {
+              return true;
+          }
+      }
+  }
+
+  // Check diagonal (from bottom-left to top-right)
+  for (let row = 3; row < 6; row++) {
+      for (let col = 0; col < 4; col++) {
+          if (
+              board[row][col] === color &&
+              board[row - 1][col + 1] === color &&
+              board[row - 2][col + 2] === color &&
+              board[row - 3][col + 3] === color
+          ) {
+              return true;
+          }
+      }
+  }
+
+  // Check diagonal (from top-left to bottom-right)
+  for (let row = 0; row < 3; row++) {
+      for (let col = 0; col < 4; col++) {
+          if (
+              board[row][col] === color &&
+              board[row + 1][col + 1] === color &&
+              board[row + 2][col + 2] === color &&
+              board[row + 3][col + 3] === color
+          ) {
+              return true;
+          }
+      }
+  }
+
+  return false;
+}
+
+let gameEnded = false; 
+
+const dropSound = new Audio('audio/click.mp3');
+const winSound = new Audio('audio/tada.mp3');
+
+let currentPlayerColor = playerColors[currentPlayerIndex];
+
+gameBoard.addEventListener('drop', (event) => {
+    event.preventDefault();
+
+    if (gameEnded) return; 
+
+    const droppedCell = event.target;
+
+    if (droppedCell.classList.contains('cell')) {
+        const col = parseInt(droppedCell.dataset.col);
+
+        let row = 5; 
+        while (row >= 0 && board[row][col] !== null) {
+            row--; 
+        }
+
+        if (row >= 0) {
+            board[row][col] = currentPlayerColor;
+            dropSound.play();
+
+            const newPiece = document.createElement('div');
+            newPiece.classList.add('piece');
+            newPiece.style.backgroundColor = currentPlayerColor;
+
+            const targetCell = document.querySelector(`.cell[data-row="${row}"][data-col="${col}"]`);
+            targetCell.appendChild(newPiece);
+
+            // Check for a win condition
+            if (checkForWin(board, currentPlayerColor)) {
+                document.getElementById('winner').innerText = `${currentPlayerColor.toUpperCase()} wins!`;
+                winSound.play();
+                gameEnded = true; 
+                return; 
+            }
+
+            // Switch players
+            currentPlayerIndex = (currentPlayerIndex + 1) % playerColors.length;
+            currentPlayerColor = playerColors[currentPlayerIndex];
+
+            draggablePiece.style.backgroundColor = currentPlayerColor;
+        }
+    }
+});
