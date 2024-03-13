@@ -6,6 +6,10 @@ Connect Four (also known as Connect 4, Four Up, Plot Four, Find Four, Captain's 
 
 This is a web version of the game that is built of HTML, CSS and JavaScript.
 
+HTML: The basic structure of the game that the CSS and JavaScript to easily flow through.
+CSS: Used for all things visuals for the title screen and game board/pieces.
+JavaScript: Where it tells the website the logic of the game, which piece is going to be placed in which row and making the pieces draggable from its starting position to the board. It also will register and acknowledge when a 4-in-a-row has been made in any direction.
+
 ## Rules/Functionality
 
 1. Click Start to Begin on the separate title screen. After the click of the start button, it will then load the game board.
