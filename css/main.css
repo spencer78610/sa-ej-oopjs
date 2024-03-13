@@ -243,7 +243,23 @@ a {
 
 .status {
   display: none;
-  margin-top: 20px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 20px; /* Optional: adjust as needed */
+}
+
+.draggable-piece {
+  width: 60px;
+  height: 60px;
+  background-color: red;
+  border: 2px solid #333;
+  border-radius: 50%;
+  cursor: -webkit-grab;
+  cursor: grab;
+  position: absolute;
+  top: 42%;
+  left: 55%;
 }
 
 .status button {

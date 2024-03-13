@@ -56,7 +56,20 @@ a {
 
 .status {
   display: none;
-  margin-top: 20px;
+  justify-content: center;
+  margin-top: 20px; /* Optional: adjust as needed */
+}
+
+.draggable-piece {
+  width: 60px; 
+  height: 60px;
+  background-color: red; 
+  border: 2px solid #333;
+  border-radius: 50%;
+  cursor: grab;
+  position: absolute; 
+  top: 42%; // you may need to mess around with these
+  left: 55%;
 }
 
 .status button{
