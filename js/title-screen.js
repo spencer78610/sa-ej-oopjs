@@ -7,7 +7,7 @@ export function titleScreen() {
     startButton.addEventListener('click', function () {
         titleScreen.style.display = 'none'; 
         gameBoard.style.display = 'inline-block'; 
-        statusBoard.style.display = 'block';
+        statusBoard.style.display = 'flex';
     });
 
 
