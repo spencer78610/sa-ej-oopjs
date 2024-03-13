@@ -197,9 +197,14 @@ h1 {
   font-size: 120px;
   text-align: center;
   padding-top: 250px;
-  text-shadow: 1px 1px 2px rgb(0, 0, 0), 0 0 1em #ff0000, 0 0 0.2em #ffffff;
+  text-shadow: 1px 1px 2px rgb(0, 0, 0), 0 0 1em #ddff00, 0 0 0.2em #000000;
   padding-bottom: 75px;
   color: white;
+}
+
+h2 {
+  color: white;
+  text-shadow: 1px 1px 2px rgb(0, 0, 0), 0 0 1em #ff0000, 0 0 0.2em #ffffff;
 }
 
 p {
@@ -217,27 +222,45 @@ a {
 }
 
 .game-board {
-  display: none; /* Initially hide the game board */
+  display: none;
   border: 7px solid #33209c;
   border-radius: 10px;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(7, 60px); /* Adjust width of cells as needed */
-  grid-template-rows: repeat(6, 60px); /* Adjust height of cells as needed */
-  gap: 5px; /* Adjust gap between cells as needed */
-  background-color: #87CEEB; /* Light blue background */
+  grid-template-columns: repeat(7, 60px);
+  grid-template-rows: repeat(6, 60px);
+  gap: 5px;
+  background-color: #87CEEB;
 }
 
 .cell {
-  background-color: #fff; /* White background */
+  background-color: #fff;
   border: 2px solid #333;
-  border-radius: 50%; /* Make cells circular */
+  border-radius: 50%;
 }
 
 .status {
+  display: none;
   margin-top: 20px;
+}
+
+.status button {
+  color: #007246;
+  font-size: 20px;
+  border: 2px solid #2d7664;
+  padding: 10px 35px;
+  border-radius: 50px;
+}
+
+.status button:hover {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-color: rgba(138, 138, 138, 0.1450980392);
+  -webkit-transition: all 250ms ease-in-out;
+  transition: all 250ms ease-in-out;
+  cursor: pointer;
 }
 
 .current-player {
@@ -246,34 +269,41 @@ a {
 
 .winner {
   font-weight: bold;
-  color: green;
+  font-size: 64px;
+  color: rgb(13, 255, 0);
 }
 
 .draggable-piece {
-  width: 60px; /* Adjust width and height as needed */
+  width: 60px;
   height: 60px;
-  background-color: red; /* Example color for the draggable piece */
+  background-color: red;
+  border: 2px solid #333;
+  border-radius: 50%;
+  text-align: center;
+  cursor: pointer;
+}
+
+.piece {
+  width: 60px;
+  height: 60px;
   border: 2px solid #333;
   border-radius: 50%;
 }
 
-/* styles.css */
-.piece {
-  width: 50px; /* Adjust dimensions as needed */
-  height: 50px;
-  border-radius: 50%; /* Creates a circular shape */
-  border: 2px solid black; /* Adds a border */
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box; /* Ensures border doesn't affect dimensions */
+#start-button {
+  color: #007246;
+  font-size: 24px;
+  border: 2px solid #2d7664;
+  padding: 14px 70px;
+  border-radius: 50px;
+  margin-top: 20px;
 }
 
-/* Additional styles for further customization */
-.piece.red {
-  background-color: red;
+#start-button:hover {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-color: rgba(138, 138, 138, 0.1450980392);
+  -webkit-transition: all 250ms ease-in-out;
+  transition: all 250ms ease-in-out;
+  cursor: pointer;
 }
-
-.piece.blue {
-  background-color: blue;
-}
-
-/* Add more classes and styles as needed for different colors or customizations */
