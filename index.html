@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Move API</title>
+    <title>Connect Four</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -9,71 +9,80 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600&display=swap" rel="stylesheet">
     <link href="css/grid.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
-    <script defer src="js/main.js"></script>
+    <script type="module" src="js/main.js"></script>
   </head>
-  <body>
-    <div class="grid-con">
-  <div class="container col-span-full m-col-span-full">
-    <div id="start-menu" class="menu">
+<body>
+  <div class="container">
+    <div class="title-screen">
       <h1>Connect Four</h1>
-      <button onclick="startGame()">Start Game</button>
+      <button id="start-button">Start Game</button>
     </div>
-    <div class="game-board">
-      <!-- Create a grid for the game board -->
+    <div class="game-board title-board">
+      <h2>Connect Four</h2>
       <div class="grid">
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
+
+        <div class="cell" data-row="0" data-col="0"></div>
+        <div class="cell" data-row="0" data-col="1"></div>
+        <div class="cell" data-row="0" data-col="2"></div>
+        <div class="cell" data-row="0" data-col="3"></div>
+        <div class="cell" data-row="0" data-col="4"></div>
+        <div class="cell" data-row="0" data-col="5"></div>
+        <div class="cell" data-row="0" data-col="6"></div>
+
+        <div class="cell" data-row="1" data-col="0"></div>
+        <div class="cell" data-row="1" data-col="1"></div>
+        <div class="cell" data-row="1" data-col="2"></div>
+        <div class="cell" data-row="1" data-col="3"></div>
+        <div class="cell" data-row="1" data-col="4"></div>
+        <div class="cell" data-row="1" data-col="5"></div>
+        <div class="cell" data-row="1" data-col="6"></div>
+
+        <div class="cell" data-row="2" data-col="0"></div>
+        <div class="cell" data-row="2" data-col="1"></div>
+        <div class="cell" data-row="2" data-col="2"></div>
+        <div class="cell" data-row="2" data-col="3"></div>
+        <div class="cell" data-row="2" data-col="4"></div>
+        <div class="cell" data-row="2" data-col="5"></div>
+        <div class="cell" data-row="2" data-col="6"></div>
+
+        <div class="cell" data-row="3" data-col="0"></div>
+        <div class="cell" data-row="3" data-col="1"></div>
+        <div class="cell" data-row="3" data-col="2"></div>
+        <div class="cell" data-row="3" data-col="3"></div>
+        <div class="cell" data-row="3" data-col="4"></div>
+        <div class="cell" data-row="3" data-col="5"></div>
+        <div class="cell" data-row="3" data-col="6"></div>
+        
+        <div class="cell" data-row="4" data-col="0"></div>
+        <div class="cell" data-row="4" data-col="1"></div>
+        <div class="cell" data-row="4" data-col="2"></div>
+        <div class="cell" data-row="4" data-col="3"></div>
+        <div class="cell" data-row="4" data-col="4"></div>
+        <div class="cell" data-row="4" data-col="5"></div>
+        <div class="cell" data-row="4" data-col="6"></div>
+
+        <div class="cell" data-row="5" data-col="0"></div>
+        <div class="cell" data-row="5" data-col="1"></div>
+        <div class="cell" data-row="5" data-col="2"></div>
+        <div class="cell" data-row="5" data-col="3"></div>
+        <div class="cell" data-row="5" data-col="4"></div>
+        <div class="cell" data-row="5" data-col="5"></div>
+        <div class="cell" data-row="5" data-col="6"></div>
+
         <!-- Each cell represents a slot where players can drop their discs -->
         <!-- Use JavaScript to dynamically populate and update this grid -->
         <!-- Each cell will have a unique ID based on its position, e.g., cell-0-0, cell-0-1, etc. -->
       </div>
-      </div>
     </div>
     <div class="status">
+      <button>Restart</button>
       <p class="current-player">Current player: <span id="current-player"></span></p>
       <p class="winner" id="winner"></p>
+      <div class="draggable-piece" draggable="true"></div>
+
     </div>
-    <div class="draggable-piece" draggable="true"></div>
+
   </div>
+
 </body>
-</html>  
+</html>
