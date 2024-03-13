@@ -18,7 +18,6 @@ const piecePlayer1 = new Piece(player1.color);
 const piecePlayer2 = new Piece(player2.color);
 
 const playerColors = ['red', 'yellow']; 
-// Initialize the game board array
 const board = Array.from({ length: 6 }, () => Array(7).fill(null));
 
 let currentPlayerIndex = 0;
@@ -139,7 +138,6 @@ gameBoard.addEventListener('drop', (event) => {
             currentPlayerIndex = (currentPlayerIndex + 1) % playerColors.length;
             currentPlayerColor = playerColors[currentPlayerIndex];
 
-            // Update the color of the draggable piece
             draggablePiece.style.backgroundColor = currentPlayerColor;
         }
     }

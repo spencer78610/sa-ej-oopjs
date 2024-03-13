@@ -47,7 +47,6 @@ a {
   grid-template-columns: repeat(7, 60px); 
   grid-template-rows: repeat(6, 60px); 
   gap: 5px; 
-  // background-color: #40a497; 
 }
 
 .cell {
@@ -59,7 +58,7 @@ a {
 .status {
   display: none;
   justify-content: center;
-  margin-top: 20px; /* Optional: adjust as needed */
+  margin-top: 20px; 
 }
 
 .draggable-piece {
