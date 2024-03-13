@@ -17,5 +17,4 @@ Additionally, there are sound feedback for when a piece is placed and when a pla
 
 ## Credits
 
-Spencer Abbott
-Ethan Jutila
+Spencer Abbott and Ethan Jutila
